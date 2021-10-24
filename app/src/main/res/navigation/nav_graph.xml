@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/subredditFragment">
+
+    <fragment
+        android:id="@+id/subredditFragment"
+        android:name="com.daire.betterreddit.presentation.subbredditposts.SubredditFragment"
+        android:label="fragment_subreddit"
+        tools:layout="@layout/fragment_subreddit" />
+</navigation>
