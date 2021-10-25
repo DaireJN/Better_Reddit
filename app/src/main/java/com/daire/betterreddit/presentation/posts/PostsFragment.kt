@@ -12,6 +12,7 @@ import com.daire.betterreddit.common.viewBinding
 import com.daire.betterreddit.databinding.FragmentPostsBinding
 import com.daire.betterreddit.domain.posts.Child
 import com.daire.betterreddit.presentation.UIController
+import com.daire.betterreddit.presentation.utli.fadeToVisible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -55,6 +56,7 @@ class PostsFragment : Fragment(R.layout.fragment_posts) {
                     RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
                 postsAdapter?.submitList(children)
                 adapter = postsAdapter
+                fadeToVisible()
             }
         }
     }
