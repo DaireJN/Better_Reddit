@@ -1,10 +1,12 @@
 package com.daire.betterreddit.presentation.posts
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.daire.betterreddit.R
 import com.daire.betterreddit.databinding.SubredditPostItemBinding
 import com.daire.betterreddit.domain.posts.Child
 
@@ -36,11 +38,16 @@ class PostsAdapter(
 
     inner class PostsViewHolder(private val binding: SubredditPostItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        private val rootContext: Context = binding.root.context
         fun bind(child: Child) {
             binding.postTitleTv.text = child.postData.title
-            binding.subredditTitleTv.text = child.postData.title
-            binding.submittedByTv.text = child.postData.title
-            binding.votesCountTv.text = child.postData.title
+            binding.subredditTitleTv.text = child.postData.subreddit
+            binding.submittedByTv.text =
+                rootContext.getString(R.string.submission_by, child.postData.author)
+            binding.votesCountTv.text = rootContext.getString(
+                R.string.vote_count,
+                child.postData.score
+            )
         }
     }
 

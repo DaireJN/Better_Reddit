@@ -8,9 +8,8 @@
 
     <string name="submission_by">Submission By %s</string>
 
-    // tool tip placeholders
     <string name="subreddit_title">Subreddit Title</string>
     <string name="post_title">Post Title</string>
-    <string name="vote_count">Vote Count</string>
+    <string name="vote_count">Vote Count %d</string>
 
 </resources>

@@ -117,5 +117,8 @@ data class RemotePostDataDto(
 
 fun RemotePostDataDto.toPostData() = PostData(
     title = title,
-    score = score
+    score = score,
+    author = author,
+    subreddit = subreddit,
+    thumbnail = thumbnail
 )
