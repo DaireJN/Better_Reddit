@@ -11,5 +11,7 @@
     <string name="subreddit_title">Subreddit Title</string>
     <string name="post_title">Post Title</string>
     <string name="vote_count">Vote Count %d</string>
+    <string name="subscriber_count">Subscribers: %d</string>
+    <string name="view_posts">View Posts</string>
 
 </resources>

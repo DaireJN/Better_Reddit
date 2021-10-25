@@ -1,6 +1,6 @@
 package com.daire.betterreddit.data.remote.dto.posts
 
-import com.daire.betterreddit.domain.posts.SubRedditPostsData
+import com.daire.betterreddit.domain.model.posts.SubRedditPostsData
 
 data class RemoteSubredditPostsResponseDto(
     val data: RemoteDataDto,

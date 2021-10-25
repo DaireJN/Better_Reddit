@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.daire.betterreddit.R
 import com.daire.betterreddit.databinding.SubredditPostImageItemBinding
 import com.daire.betterreddit.databinding.SubredditPostItemBinding
-import com.daire.betterreddit.domain.posts.Child
-import com.daire.betterreddit.presentation.utli.loadImage
+import com.daire.betterreddit.domain.model.posts.Child
+import com.daire.betterreddit.presentation.util.loadImage
 
 private const val VIEW_TYPE_DEFAULT_POST = 0
 private const val VIEW_TYPE_IMAGE_POST = 1

@@ -1,6 +1,6 @@
 package com.daire.betterreddit.data.remote.dto.posts
 
-import com.daire.betterreddit.domain.posts.Child
+import com.daire.betterreddit.domain.model.posts.Child
 import com.google.gson.annotations.SerializedName
 
 data class RemoteChildrenDto(

@@ -1,6 +1,6 @@
 package com.daire.betterreddit.data.remote.dto.posts
 
-import com.daire.betterreddit.domain.posts.PostData
+import com.daire.betterreddit.domain.model.posts.PostData
 
 data class RemotePostDataDto(
     val all_awardings: List<RemoteAllAwardingDto>,

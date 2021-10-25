@@ -1,4 +1,4 @@
-package com.daire.betterreddit.domain.posts
+package com.daire.betterreddit.domain.model.posts
 
 data class PostData(
     val score: Int,
