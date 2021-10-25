@@ -11,6 +11,7 @@ import com.daire.betterreddit.R
 import com.daire.betterreddit.common.viewBinding
 import com.daire.betterreddit.databinding.FragmentPostsBinding
 import com.daire.betterreddit.domain.posts.Child
+import com.daire.betterreddit.presentation.UIController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -20,16 +21,18 @@ class PostsFragment : Fragment(R.layout.fragment_posts) {
     private val binding by viewBinding(FragmentPostsBinding::bind)
     private val viewModel by viewModels<PostsViewModel>()
     private var postsAdapter: PostsAdapter? = null
+    private lateinit var uiController: UIController
 
     @InternalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getSubredditPosts("all")
 
+        uiController = activity as UIController
+
         viewModel.state.observe(viewLifecycleOwner) { state ->
-            if (state.isLoading) {
-                Toast.makeText(requireContext(), "loading", Toast.LENGTH_SHORT).show()
-            }
+
+            uiController.displayProgressSpinner(state.isLoading)
 
             state.subredditData?.data?.children.apply {
                 if (!this.isNullOrEmpty()) {
