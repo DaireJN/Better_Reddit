@@ -1,5 +1,5 @@
 /build
-/src/main/java/com/daire/betterreddit/presentation/subbredditposts/SubredditPostsFragment.kt
+/src/main/java/com/daire/betterreddit/presentation/posts/PostsFragment.kt
 # Built application files
 *.apk
 *.aar

@@ -1,41 +1,37 @@
-package com.daire.betterreddit.presentation.subbredditposts
+package com.daire.betterreddit.presentation.posts
 
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.daire.betterreddit.common.Resource
 import com.daire.betterreddit.domain.usecase.GetPostsForSubredditUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
-class SubredditPostsViewModel @Inject constructor(
+class PostsViewModel @Inject constructor(
     private val getPostsForSubredditUseCase: GetPostsForSubredditUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(SubredditPostsDataState())
+    private val _state = MutableLiveData(PostsDataState())
 
     // provide read only state to outside components
-    val state: StateFlow<SubredditPostsDataState> = _state
+    val state: LiveData<PostsDataState> = _state
 
     fun getSubredditPosts(subredditName: String) {
         getPostsForSubredditUseCase.execute(subredditName).onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _state.value = SubredditPostsDataState(subredditData = result.data)
+                    _state.value = PostsDataState(subredditData = result.data)
                 }
                 is Resource.Error -> {
-                    _state.value = SubredditPostsDataState(
+                    _state.value = PostsDataState(
                         error = result.message ?: "An unexpected error occurred"
                     )
                 }
                 is Resource.Loading -> {
-                    _state.value = SubredditPostsDataState(isLoading = true)
+                    _state.value = PostsDataState(isLoading = true)
                 }
             }
         }.launchIn(viewModelScope)

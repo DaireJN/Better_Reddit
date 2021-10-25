@@ -1,5 +1,16 @@
 <resources>
-    <string name="app_name">Better Reddit</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Better Reddit</string>>
+
+    <string name="home_fragment_title">Home</string>
+    <string name="profile_fragment_title">Profile</string>
+    <string name="subreddits_fragment_title">Subreddits</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="submission_by">Submission By %s</string>
+
+    // tool tip placeholders
+    <string name="subreddit_title">Subreddit Title</string>
+    <string name="post_title">Post Title</string>
+    <string name="vote_count">Vote Count</string>
+
 </resources>

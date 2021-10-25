@@ -3,11 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/subredditFragment">
+    app:startDestination="@id/postsFragment">
 
     <fragment
-        android:id="@+id/subredditFragment"
-        android:name="com.daire.betterreddit.presentation.subbredditposts.SubredditFragment"
-        android:label="fragment_subreddit"
-        tools:layout="@layout/fragment_subreddit" />
+        android:id="@+id/postsFragment"
+        android:name="com.daire.betterreddit.presentation.posts.PostsFragment"
+        android:label="fragment_posts"
+        tools:layout="@layout/fragment_posts" />
+    <fragment
+        android:id="@+id/subredditsFragment"
+        android:name="com.daire.betterreddit.presentation.subreddits.SubredditsFragment"
+        android:label="fragment_subreddits"
+        tools:layout="@layout/fragment_subreddits" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.daire.betterreddit.presentation.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

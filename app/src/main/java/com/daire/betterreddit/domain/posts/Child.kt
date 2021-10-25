@@ -1,6 +1,6 @@
 package com.daire.betterreddit.domain.posts
 
-data class Children(
+data class Child(
     val postData: PostData,
     val kind: String
 )

@@ -116,6 +116,6 @@ data class RemotePostDataDto(
 )
 
 fun RemotePostDataDto.toPostData() = PostData(
-    tile = title,
+    title = title,
     score = score
 )
