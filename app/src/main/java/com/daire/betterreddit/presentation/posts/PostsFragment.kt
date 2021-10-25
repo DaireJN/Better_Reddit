@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.daire.betterreddit.R
 import com.daire.betterreddit.common.viewBinding
 import com.daire.betterreddit.databinding.FragmentPostsBinding
@@ -46,9 +47,10 @@ class PostsFragment : Fragment(R.layout.fragment_posts) {
         binding.apply {
             postsRecyclerView.apply {
                 layoutManager = LinearLayoutManager(activity)
-                postsAdapter = PostsAdapter(
-                    children
-                )
+                postsAdapter = PostsAdapter()
+                postsAdapter?.stateRestorationPolicy =
+                    RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+                postsAdapter?.submitList(children)
                 adapter = postsAdapter
             }
         }

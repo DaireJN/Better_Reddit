@@ -10,13 +10,12 @@ import com.daire.betterreddit.R
 import com.daire.betterreddit.databinding.SubredditPostImageItemBinding
 import com.daire.betterreddit.databinding.SubredditPostItemBinding
 import com.daire.betterreddit.domain.posts.Child
+import com.daire.betterreddit.presentation.utli.loadImage
 
 private const val VIEW_TYPE_DEFAULT_POST = 0
 private const val VIEW_TYPE_IMAGE_POST = 1
 
-class PostsAdapter(
-    private var children: List<Child>
-) :
+class PostsAdapter :
     ListAdapter<Child, RecyclerView.ViewHolder>(ChildDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -42,15 +41,12 @@ class PostsAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when (children[position].postData.postHint) {
+        return when (getItem(position).postData.postHint) {
             "image" -> VIEW_TYPE_IMAGE_POST
             else -> VIEW_TYPE_DEFAULT_POST
         }
 
     }
-
-    override fun getItemCount() = children.size
-
 
     inner class PostsViewHolder(private val binding: SubredditPostItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -71,6 +67,7 @@ class PostsAdapter(
         RecyclerView.ViewHolder(binding.root) {
         private val rootContext: Context = binding.root.context
         fun bind(child: Child) {
+            binding.postImage.loadImage(child.postData.url, rootContext)
             binding.postTitleTv.text = child.postData.title
             binding.subredditTitleTv.text = child.postData.subreddit
             binding.submittedByTv.text =
@@ -85,11 +82,11 @@ class PostsAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is PostsViewHolder -> {
-                val child = children[position]
+                val child = getItem(position)
                 holder.bind(child)
             }
             is ImagePostViewHolder -> {
-                val child = children[position]
+                val child = getItem(position)
                 holder.bind(child)
             }
         }

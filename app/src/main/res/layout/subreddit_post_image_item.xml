@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    app:cardCornerRadius="32dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -35,18 +35,19 @@
             app:layout_constraintTop_toBottomOf="@+id/subredditTitleTv"
             tools:text="@string/post_title" />
 
-        <ImageView
-            android:id="@+id/imageView"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/postImage"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="120dp"
+            app:shapeAppearanceOverlay="@style/roundedCorners"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/postTitleTv"
-            android:src="@drawable/ic_launcher_background"/>
+            app:layout_constraintTop_toBottomOf="@+id/postTitleTv" />
 
         <TextView
             android:id="@+id/submittedByTv"
@@ -58,7 +59,7 @@
             tools:text="@string/submission_by"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/postImage" />
 
         <TextView
             android:id="@+id/votesCountTv"

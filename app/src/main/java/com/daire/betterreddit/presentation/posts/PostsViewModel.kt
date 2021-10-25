@@ -20,20 +20,22 @@ class PostsViewModel @Inject constructor(
     val state: LiveData<PostsDataState> = _state
 
     fun getSubredditPosts(subredditName: String) {
-        getPostsForSubredditUseCase.execute(subredditName).onEach { result ->
-            when (result) {
-                is Resource.Success -> {
-                    _state.value = PostsDataState(subredditData = result.data)
+        if (_state.value?.subredditData?.data?.children.isNullOrEmpty()) {
+            getPostsForSubredditUseCase.execute(subredditName).onEach { result ->
+                when (result) {
+                    is Resource.Success -> {
+                        _state.value = PostsDataState(subredditData = result.data)
+                    }
+                    is Resource.Error -> {
+                        _state.value = PostsDataState(
+                            error = result.message ?: "An unexpected error occurred"
+                        )
+                    }
+                    is Resource.Loading -> {
+                        _state.value = PostsDataState(isLoading = true)
+                    }
                 }
-                is Resource.Error -> {
-                    _state.value = PostsDataState(
-                        error = result.message ?: "An unexpected error occurred"
-                    )
-                }
-                is Resource.Loading -> {
-                    _state.value = PostsDataState(isLoading = true)
-                }
-            }
-        }.launchIn(viewModelScope)
+            }.launchIn(viewModelScope)
+        }
     }
 }

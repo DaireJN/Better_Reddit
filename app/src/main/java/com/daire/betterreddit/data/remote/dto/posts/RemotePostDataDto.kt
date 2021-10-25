@@ -74,7 +74,7 @@ data class RemotePostDataDto(
     val parent_whitelist_status: String,
     val permalink: String,
     val pinned: Boolean,
-    val post_hint: String,
+    val post_hint: String? = "",
     val preview: RemotePreviewDto,
     val pwls: Int,
     val quarantine: Boolean,
@@ -121,6 +121,7 @@ fun RemotePostDataDto.toPostData() = PostData(
     author = author,
     subreddit = subreddit,
     thumbnail = thumbnail,
-    postHint = post_hint,
+    // post hint is missing for some posts in the network response
+    postHint = post_hint ?: "",
     url = url
 )
