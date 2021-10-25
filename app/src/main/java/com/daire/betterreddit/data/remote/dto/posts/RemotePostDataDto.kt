@@ -120,5 +120,7 @@ fun RemotePostDataDto.toPostData() = PostData(
     score = score,
     author = author,
     subreddit = subreddit,
-    thumbnail = thumbnail
+    thumbnail = thumbnail,
+    postHint = post_hint,
+    url = url
 )

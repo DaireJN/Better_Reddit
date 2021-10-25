@@ -7,34 +7,50 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.daire.betterreddit.R
+import com.daire.betterreddit.databinding.SubredditPostImageItemBinding
 import com.daire.betterreddit.databinding.SubredditPostItemBinding
 import com.daire.betterreddit.domain.posts.Child
+
+private const val VIEW_TYPE_DEFAULT_POST = 0
+private const val VIEW_TYPE_IMAGE_POST = 1
 
 class PostsAdapter(
     private var children: List<Child>
 ) :
-    ListAdapter<Child, PostsAdapter.PostsViewHolder>(ChildDiffCallback) {
+    ListAdapter<Child, RecyclerView.ViewHolder>(ChildDiffCallback) {
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): PostsAdapter.PostsViewHolder {
-        val binding = SubredditPostItemBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-        return PostsViewHolder(
-            binding
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        if (viewType == VIEW_TYPE_DEFAULT_POST) {
+            val binding = SubredditPostItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+            return PostsViewHolder(
+                binding
+            )
+        } else {
+            val binding = SubredditPostImageItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+            return ImagePostViewHolder(
+                binding
+            )
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return when (children[position].postData.postHint) {
+            "image" -> VIEW_TYPE_IMAGE_POST
+            else -> VIEW_TYPE_DEFAULT_POST
+        }
+
     }
 
     override fun getItemCount() = children.size
 
-    override fun onBindViewHolder(holder: PostsAdapter.PostsViewHolder, position: Int) {
-        val child = children[position]
-        holder.bind(child)
-    }
 
     inner class PostsViewHolder(private val binding: SubredditPostItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -48,6 +64,34 @@ class PostsAdapter(
                 R.string.vote_count,
                 child.postData.score
             )
+        }
+    }
+
+    inner class ImagePostViewHolder(private val binding: SubredditPostImageItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        private val rootContext: Context = binding.root.context
+        fun bind(child: Child) {
+            binding.postTitleTv.text = child.postData.title
+            binding.subredditTitleTv.text = child.postData.subreddit
+            binding.submittedByTv.text =
+                rootContext.getString(R.string.submission_by, child.postData.author)
+            binding.votesCountTv.text = rootContext.getString(
+                R.string.vote_count,
+                child.postData.score
+            )
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is PostsViewHolder -> {
+                val child = children[position]
+                holder.bind(child)
+            }
+            is ImagePostViewHolder -> {
+                val child = children[position]
+                holder.bind(child)
+            }
         }
     }
 

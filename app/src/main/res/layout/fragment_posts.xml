@@ -15,5 +15,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/subreddit_post_item" />
+        tools:listitem="@layout/subreddit_post_image_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>
