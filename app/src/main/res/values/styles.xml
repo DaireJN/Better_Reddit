@@ -6,4 +6,16 @@
         <item name="cornerSize">@dimen/card_corner_radius</item>
     </style>
 
+    <style name="textHeading" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">@dimen/text_header_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="textSubHeading" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">@dimen/text_sub_header_size</item>
+    </style>
+
+
 </resources>

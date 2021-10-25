@@ -53,7 +53,7 @@ class PostsAdapter :
         private val rootContext: Context = binding.root.context
         fun bind(child: Child) {
             binding.postTitleTv.text = child.postData.title
-            binding.subredditTitleTv.text = child.postData.subreddit
+            binding.subredditTitleTv.text = child.postData.subredditNameWithPrefix
             binding.submittedByTv.text =
                 rootContext.getString(R.string.submission_by, child.postData.author)
             binding.votesCountTv.text = rootContext.getString(
@@ -69,7 +69,7 @@ class PostsAdapter :
         fun bind(child: Child) {
             binding.postImage.loadImage(child.postData.url, rootContext)
             binding.postTitleTv.text = child.postData.title
-            binding.subredditTitleTv.text = child.postData.subreddit
+            binding.subredditTitleTv.text = child.postData.subredditNameWithPrefix
             binding.submittedByTv.text =
                 rootContext.getString(R.string.submission_by, child.postData.author)
             binding.votesCountTv.text = rootContext.getString(

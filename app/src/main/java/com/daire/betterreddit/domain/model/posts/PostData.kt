@@ -7,5 +7,6 @@ data class PostData(
     val thumbnail: String,
     val author: String,
     val postHint: String,
-    val url: String
+    val url: String,
+    val subredditNameWithPrefix: String
 )

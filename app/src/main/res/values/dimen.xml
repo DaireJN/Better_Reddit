@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="text_header_size">16sp</dimen>
+    <dimen name="text_sub_header_size">14sp</dimen>
 </resources>

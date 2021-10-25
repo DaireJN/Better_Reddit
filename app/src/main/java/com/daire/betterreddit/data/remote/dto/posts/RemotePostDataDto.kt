@@ -123,5 +123,6 @@ fun RemotePostDataDto.toPostData() = PostData(
     thumbnail = thumbnail,
     // post hint is missing for some posts in the network response
     postHint = post_hint ?: "",
-    url = url
+    url = url,
+    subredditNameWithPrefix = subreddit_name_prefixed
 )

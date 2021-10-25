@@ -21,6 +21,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
+            style="@style/textHeading"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,10 +29,11 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/postTitleTv"
+            style="@style/textHeading"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,26 +49,28 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background"
+            tools:src="@tools:sample/avatars"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/postTitleTv" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/submittedByTv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
+            style="@style/textSubHeading"
             tools:text="@string/submission_by"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/postImage" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/votesCountTv"
             android:layout_width="0dp"
+            style="@style/textSubHeading"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"

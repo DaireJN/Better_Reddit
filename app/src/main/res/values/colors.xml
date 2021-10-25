@@ -7,12 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
-    <color name="grey_background">#F5F5F5</color>
-    <color name="orange_primary">#FF4500</color>
-    <color name="dark_text">#252527</color>
     <color name="off_white">#F8F8F8</color>
-    <color name="blue_accent">#0079D3</color>
-    <color name="dark_orange">#E64A19</color>
+
+    <color name="primary">#03A9F4</color>
+    <color name="primary_dark">#0288D1</color>
+    <color name="primary_light">#B3E5FC</color>
+    <color name="accent">#448AFF</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
 
 </resources>
