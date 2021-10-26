@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.daire.betterreddit.R
@@ -15,7 +16,7 @@ import com.daire.betterreddit.presentation.util.fadeToVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PostsFragment : Fragment(R.layout.fragment_posts) {
+class PostsFragment : Fragment(R.layout.fragment_posts), PostClickListener {
 
     private val binding by viewBinding(FragmentPostsBinding::bind)
     private val viewModel by viewModels<PostsViewModel>()
@@ -46,7 +47,7 @@ class PostsFragment : Fragment(R.layout.fragment_posts) {
         binding.apply {
             postsRecyclerView.apply {
                 layoutManager = LinearLayoutManager(activity)
-                postsAdapter = PostsAdapter()
+                postsAdapter = PostsAdapter(this@PostsFragment)
                 postsAdapter?.stateRestorationPolicy =
                     RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
                 postsAdapter?.submitList(children)
@@ -59,5 +60,9 @@ class PostsFragment : Fragment(R.layout.fragment_posts) {
     override fun onDestroyView() {
         super.onDestroyView()
         postsAdapter = null
+    }
+
+    override fun onItemSelected(position: Int, item: Child) {
+        findNavController().navigate(PostsFragmentDirections.actionPostsFragmentToPostDetailFragment())
     }
 }

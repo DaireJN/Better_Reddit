@@ -10,7 +10,7 @@ import com.daire.betterreddit.databinding.SubredditItemBinding
 import com.daire.betterreddit.domain.model.subreddit.SubredditChildData
 import com.daire.betterreddit.presentation.util.loadImage
 
-class SubredditsAdapter(private val interaction: Interaction) :
+class SubredditsAdapter(private val subredditItemClickListener: SubredditItemClickListener) :
     ListAdapter<SubredditChildData, SubredditsAdapter.SubredditViewHolder>(
         SubredditChildDataDiffCallback
     ) {
@@ -36,10 +36,10 @@ class SubredditsAdapter(private val interaction: Interaction) :
             binding.subredditIcon.loadImage(subredditChildData.iconImage, rootContext)
             binding.subredditName.text = subredditChildData.displayName
             binding.root.setOnClickListener {
-                interaction.onItemSelected(absoluteAdapterPosition, subredditChildData)
+                subredditItemClickListener.onItemSelected(absoluteAdapterPosition, subredditChildData)
             }
             binding.root.setOnLongClickListener {
-                interaction.onItemLongClick(absoluteAdapterPosition, subredditChildData)
+                subredditItemClickListener.onItemLongClick(absoluteAdapterPosition, subredditChildData)
             }
         }
     }
@@ -67,7 +67,7 @@ object SubredditChildDataDiffCallback : DiffUtil.ItemCallback<SubredditChildData
     }
 }
 
-interface Interaction {
+interface SubredditItemClickListener {
     fun onItemSelected(position: Int, item: SubredditChildData)
     fun onItemLongClick(position: Int, item: SubredditChildData): Boolean
 }

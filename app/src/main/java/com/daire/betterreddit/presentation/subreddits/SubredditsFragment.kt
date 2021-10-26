@@ -23,7 +23,7 @@ import com.google.android.material.textview.MaterialTextView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SubredditsFragment : Fragment(R.layout.fragment_subreddits), Interaction {
+class SubredditsFragment : Fragment(R.layout.fragment_subreddits), SubredditItemClickListener {
 
     private val binding by viewBinding(FragmentSubredditsBinding::bind)
     private val viewModel by viewModels<SubredditsViewModel>()

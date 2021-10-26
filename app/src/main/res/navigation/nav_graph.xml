@@ -9,7 +9,13 @@
         android:id="@+id/postsFragment"
         android:name="com.daire.betterreddit.presentation.posts.PostsFragment"
         android:label="fragment_posts"
-        tools:layout="@layout/fragment_posts" />
+        tools:layout="@layout/fragment_posts">
+        <action
+            android:id="@+id/action_postsFragment_to_postDetailFragment"
+            app:destination="@id/postDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/subredditsFragment"
         android:name="com.daire.betterreddit.presentation.subreddits.SubredditsFragment"
@@ -20,4 +26,9 @@
         android:name="com.daire.betterreddit.presentation.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/postDetailFragment"
+        android:name="com.daire.betterreddit.presentation.postdetail.PostDetailFragment"
+        android:label="fragment_post_detail"
+        tools:layout="@layout/fragment_post_detail" />
 </navigation>

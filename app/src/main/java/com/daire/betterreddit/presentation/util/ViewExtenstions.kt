@@ -48,6 +48,20 @@ fun View.fadeToVisible() {
     }
 }
 
+fun View.fadeToGone() {
+    val animationDuration = resources.getInteger(android.R.integer.config_longAnimTime)
+    apply {
+        animate()
+            .alpha(0f)
+            .setDuration(animationDuration.toLong())
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    visibility = View.GONE
+                }
+            })
+    }
+}
+
 fun View.fadeToInvisible() {
     val animationDuration = resources.getInteger(android.R.integer.config_longAnimTime)
     apply {

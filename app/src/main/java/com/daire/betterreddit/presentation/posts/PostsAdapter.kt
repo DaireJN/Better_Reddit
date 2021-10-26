@@ -15,7 +15,7 @@ import com.daire.betterreddit.presentation.util.loadImage
 private const val VIEW_TYPE_DEFAULT_POST = 0
 private const val VIEW_TYPE_IMAGE_POST = 1
 
-class PostsAdapter :
+class PostsAdapter(private val postClickListener: PostClickListener) :
     ListAdapter<Child, RecyclerView.ViewHolder>(ChildDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -67,7 +67,7 @@ class PostsAdapter :
         RecyclerView.ViewHolder(binding.root) {
         private val rootContext: Context = binding.root.context
         fun bind(child: Child) {
-            binding.postImage.loadImage(child.postData.url, rootContext)
+//             binding.postImage.loadImage(child.postData.url, rootContext)
             binding.postTitleTv.text = child.postData.title
             binding.subredditTitleTv.text = child.postData.subredditNameWithPrefix
             binding.submittedByTv.text =
@@ -76,6 +76,9 @@ class PostsAdapter :
                 R.string.vote_count,
                 child.postData.score
             )
+            binding.root.setOnClickListener {
+                postClickListener.onItemSelected(absoluteAdapterPosition, child)
+            }
         }
     }
 
@@ -102,4 +105,8 @@ object ChildDiffCallback : DiffUtil.ItemCallback<Child>() {
     override fun areContentsTheSame(oldItem: Child, newItem: Child): Boolean {
         return oldItem.postData.title == newItem.postData.title
     }
+}
+
+interface PostClickListener {
+    fun onItemSelected(position: Int, item: Child)
 }
