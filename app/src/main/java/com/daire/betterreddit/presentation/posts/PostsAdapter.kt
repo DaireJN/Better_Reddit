@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.daire.betterreddit.R
+import com.daire.betterreddit.common.PostType
 import com.daire.betterreddit.databinding.SubredditPostImageItemBinding
 import com.daire.betterreddit.databinding.SubredditPostItemBinding
 import com.daire.betterreddit.domain.model.posts.Child
-import com.daire.betterreddit.presentation.util.loadImage
 
 private const val VIEW_TYPE_DEFAULT_POST = 0
 private const val VIEW_TYPE_IMAGE_POST = 1
@@ -42,10 +42,9 @@ class PostsAdapter(private val postClickListener: PostClickListener) :
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position).postData.postHint) {
-            "image" -> VIEW_TYPE_IMAGE_POST
+            PostType.IMAGE.hint -> VIEW_TYPE_IMAGE_POST
             else -> VIEW_TYPE_DEFAULT_POST
         }
-
     }
 
     inner class PostsViewHolder(private val binding: SubredditPostItemBinding) :
@@ -60,6 +59,9 @@ class PostsAdapter(private val postClickListener: PostClickListener) :
                 R.string.vote_count,
                 child.postData.score
             )
+            binding.root.setOnClickListener {
+                postClickListener.onItemSelected(absoluteAdapterPosition, child)
+            }
         }
     }
 
