@@ -10,8 +10,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SubredditsViewModel @Inject constructor(
-    private val getDefaultSubredditListUseCase: GetDefaultSubredditListUseCase,
-    savedStateHandle: SavedStateHandle
+    private val getDefaultSubredditListUseCase: GetDefaultSubredditListUseCase
 ) : ViewModel() {
 
     private val _state = MutableLiveData(SubredditListState())

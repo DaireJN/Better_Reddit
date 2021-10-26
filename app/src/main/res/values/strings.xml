@@ -13,5 +13,7 @@
     <string name="vote_count">Vote Count %d</string>
     <string name="subscriber_count">Subscribers: %d</string>
     <string name="view_posts">View Posts</string>
+    <string name="button">Button</string>
+    <string name="share">share</string>
 
 </resources>

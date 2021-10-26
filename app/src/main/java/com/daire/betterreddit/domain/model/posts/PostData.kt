@@ -8,5 +8,8 @@ data class PostData(
     val author: String,
     val postHint: String,
     val url: String,
-    val subredditNameWithPrefix: String
+    val subredditNameWithPrefix: String,
+    val numComments: Int,
+    val selfText: String,
+    val id: String
 )

@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), UIController {
             NavController.OnDestinationChangedListener { controller, destination, arguments ->
                 showHideBottomNavOnDestinationChanged(destination.label as String)
             }
-        navController.addOnDestinationChangedListener(destinationChangedListener)
+//        navController.addOnDestinationChangedListener(destinationChangedListener)
     }
 
     private fun showHideBottomNavOnDestinationChanged(fragmentLabel: String) {

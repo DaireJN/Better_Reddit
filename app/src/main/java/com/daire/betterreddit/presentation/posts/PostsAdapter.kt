@@ -55,10 +55,8 @@ class PostsAdapter(private val postClickListener: PostClickListener) :
             binding.subredditTitleTv.text = child.postData.subredditNameWithPrefix
             binding.submittedByTv.text =
                 rootContext.getString(R.string.submission_by, child.postData.author)
-            binding.votesCountTv.text = rootContext.getString(
-                R.string.vote_count,
-                child.postData.score
-            )
+            binding.votesCountTv.text = child.postData.score.toString()
+            binding.commentCountTv.text = child.postData.numComments.toString()
             binding.root.setOnClickListener {
                 postClickListener.onItemSelected(absoluteAdapterPosition, child)
             }
@@ -74,10 +72,8 @@ class PostsAdapter(private val postClickListener: PostClickListener) :
             binding.subredditTitleTv.text = child.postData.subredditNameWithPrefix
             binding.submittedByTv.text =
                 rootContext.getString(R.string.submission_by, child.postData.author)
-            binding.votesCountTv.text = rootContext.getString(
-                R.string.vote_count,
-                child.postData.score
-            )
+            binding.votesCountTv.text = child.postData.score.toString()
+            binding.commentCountTv.text = child.postData.numComments.toString()
             binding.root.setOnClickListener {
                 postClickListener.onItemSelected(absoluteAdapterPosition, child)
             }
@@ -96,7 +92,6 @@ class PostsAdapter(private val postClickListener: PostClickListener) :
             }
         }
     }
-
 }
 
 object ChildDiffCallback : DiffUtil.ItemCallback<Child>() {
@@ -105,7 +100,7 @@ object ChildDiffCallback : DiffUtil.ItemCallback<Child>() {
     }
 
     override fun areContentsTheSame(oldItem: Child, newItem: Child): Boolean {
-        return oldItem.postData.title == newItem.postData.title
+        return oldItem.postData.id == newItem.postData.id
     }
 }
 

@@ -26,7 +26,7 @@ class PostsFragment : Fragment(R.layout.fragment_posts), PostClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getSubredditPosts("all")
+        viewModel.getSubredditPosts("ireland")
 
         uiController = activity as UIController
 
@@ -63,6 +63,14 @@ class PostsFragment : Fragment(R.layout.fragment_posts), PostClickListener {
     }
 
     override fun onItemSelected(position: Int, item: Child) {
-        findNavController().navigate(PostsFragmentDirections.actionPostsFragmentToPostDetailFragment())
+        findNavController().navigate(
+            PostsFragmentDirections.actionPostsFragmentToPostDetailFragment(
+                articleId = item.postData.id,
+                selfText = item.postData.selfText,
+                postType = item.postData.postHint,
+                upvoteCount = item.postData.score,
+                postTitle = item.postData.title
+            )
+        )
     }
 }

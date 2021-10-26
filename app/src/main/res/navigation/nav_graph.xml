@@ -30,5 +30,27 @@
         android:id="@+id/postDetailFragment"
         android:name="com.daire.betterreddit.presentation.postdetail.PostDetailFragment"
         android:label="fragment_post_detail"
-        tools:layout="@layout/fragment_post_detail" />
+        tools:layout="@layout/fragment_post_detail">
+        <argument
+            android:name="articleId"
+            android:defaultValue='""'
+            app:argType="string" />
+        <argument
+            android:name="selfText"
+            android:defaultValue='""'
+            app:argType="string" />
+        <argument
+            android:name="postType"
+            android:defaultValue='""'
+            app:argType="string" />
+        <argument
+            android:name="upvoteCount"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="postTitle"
+            app:argType="string"
+            android:defaultValue='""' />
+
+    </fragment>
 </navigation>
