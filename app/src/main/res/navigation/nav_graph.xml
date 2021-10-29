@@ -51,6 +51,10 @@
             android:name="postTitle"
             app:argType="string"
             android:defaultValue='""' />
+        <argument
+            android:name="subredditName"
+            app:argType="string"
+            android:defaultValue='""' />
 
     </fragment>
 </navigation>

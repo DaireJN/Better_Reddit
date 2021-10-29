@@ -11,6 +11,7 @@ import com.daire.betterreddit.common.PostType
 import com.daire.betterreddit.databinding.SubredditPostImageItemBinding
 import com.daire.betterreddit.databinding.SubredditPostItemBinding
 import com.daire.betterreddit.domain.model.posts.Child
+import com.daire.betterreddit.presentation.util.loadImage
 
 private const val VIEW_TYPE_DEFAULT_POST = 0
 private const val VIEW_TYPE_IMAGE_POST = 1
@@ -67,7 +68,7 @@ class PostsAdapter(private val postClickListener: PostClickListener) :
         RecyclerView.ViewHolder(binding.root) {
         private val rootContext: Context = binding.root.context
         fun bind(child: Child) {
-//             binding.postImage.loadImage(child.postData.url, rootContext)
+            binding.postImage.loadImage(child.postData.url, rootContext)
             binding.postTitleTv.text = child.postData.title
             binding.subredditTitleTv.text = child.postData.subredditNameWithPrefix
             binding.submittedByTv.text =

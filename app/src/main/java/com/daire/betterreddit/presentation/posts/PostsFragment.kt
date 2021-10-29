@@ -69,7 +69,8 @@ class PostsFragment : Fragment(R.layout.fragment_posts), PostClickListener {
                 selfText = item.postData.selfText,
                 postType = item.postData.postHint,
                 upvoteCount = item.postData.score,
-                postTitle = item.postData.title
+                postTitle = item.postData.title,
+                subredditName = item.postData.subreddit
             )
         )
     }
