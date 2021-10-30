@@ -15,5 +15,6 @@
     <string name="view_posts">View Posts</string>
     <string name="button">Button</string>
     <string name="share">share</string>
+    <string name="loading">Loading</string>
 
 </resources>

@@ -17,6 +17,12 @@
         <item name="android:textSize">@dimen/text_sub_header_size</item>
     </style>
 
+    <style name="textLoading" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/off_white</item>
+        <item name="android:textSize">@dimen/text_header_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="textPostDetail" parent="TextAppearance.AppCompat">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:textSize">@dimen/text_post_detail_size</item>

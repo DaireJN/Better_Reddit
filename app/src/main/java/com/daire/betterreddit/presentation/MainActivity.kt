@@ -75,9 +75,9 @@ class MainActivity : AppCompatActivity(), UIController {
 
     override fun displayProgressSpinner(shouldBeVisible: Boolean) {
         if (shouldBeVisible) {
-            binding.progressBar.fadeToVisible()
+            binding.loadingContainer.fadeToVisible()
         } else {
-            binding.progressBar.fadeToInvisible()
+            binding.loadingContainer.fadeToInvisible()
         }
     }
 
