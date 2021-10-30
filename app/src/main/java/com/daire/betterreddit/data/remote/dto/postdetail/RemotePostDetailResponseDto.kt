@@ -1,6 +1,6 @@
 package com.daire.betterreddit.data.remote.dto.postdetail
 
-data class RemotePostDetailRootItemDto(
+class RemotePostDetailResponseDto(
     val data: RemoteRootDataDto,
     val kind: String
 )

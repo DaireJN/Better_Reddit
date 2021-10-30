@@ -1,17 +1,17 @@
 package com.daire.betterreddit.presentation
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.daire.betterreddit.R
 import com.daire.betterreddit.databinding.ActivityMainBinding
-import com.daire.betterreddit.presentation.util.fadeToGone
 import com.daire.betterreddit.presentation.util.fadeToInvisible
 import com.daire.betterreddit.presentation.util.fadeToVisible
+import com.daire.betterreddit.presentation.util.hide
+import com.daire.betterreddit.presentation.util.show
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -33,39 +33,40 @@ class MainActivity : AppCompatActivity(), UIController {
         val bottomNavigationView = binding.activityMainBottomNavigationView
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
-        val destinationChangedListener =
-            NavController.OnDestinationChangedListener { controller, destination, arguments ->
-                showHideBottomNavOnDestinationChanged(destination.label as String)
+        lifecycleScope.launchWhenResumed {
+            navController.addOnDestinationChangedListener { _, destination, arguments ->
+                showHideBottomNavOnDestinationChanged(destination.id, arguments)
             }
-//        navController.addOnDestinationChangedListener(destinationChangedListener)
+        }
     }
 
-    private fun showHideBottomNavOnDestinationChanged(fragmentLabel: String) {
-        when (fragmentLabel) {
-            "fragment_subreddits" -> {
-                showBottomNavigationView()
+    /**
+     * when home is clicked on the bottom nav
+     * [com.daire.betterreddit.presentation.posts.PostsFragment] arguments will have a default value
+     * where subredditName = "all"
+     * this means the subreddit "all" should be shown and bottom nav should be visible
+     * for all other subreddits bottom nav should be hidden in [com.daire.betterreddit.presentation.posts.PostsFragment]
+     */
+    private fun showHideBottomNavOnDestinationChanged(destinationId: Int, arguments: Bundle?) {
+        if (destinationId == R.id.postsFragment && arguments?.getString("subredditName", "")
+            != "all"
+        ) {
+            binding.activityMainBottomNavigationView.hide()
+            return
+        }
+        when (destinationId) {
+            R.id.subredditsFragment -> {
+                binding.activityMainBottomNavigationView.show()
             }
-            "fragment_profile" -> {
-                showBottomNavigationView()
+            R.id.profileFragment -> {
+                binding.activityMainBottomNavigationView.show()
             }
-            "fragment_posts" -> {
-                showBottomNavigationView()
+            R.id.postsFragment -> {
+                binding.activityMainBottomNavigationView.show()
             }
             else -> {
-                hideBottomNavigationView()
+                binding.activityMainBottomNavigationView.hide()
             }
-        }
-    }
-
-    private fun showBottomNavigationView() {
-        if (binding.activityMainBottomNavigationView.visibility != View.VISIBLE) {
-            binding.activityMainBottomNavigationView.fadeToVisible()
-        }
-    }
-
-    private fun hideBottomNavigationView() {
-        if (binding.activityMainBottomNavigationView.visibility == View.VISIBLE) {
-            binding.activityMainBottomNavigationView.fadeToGone()
         }
     }
 

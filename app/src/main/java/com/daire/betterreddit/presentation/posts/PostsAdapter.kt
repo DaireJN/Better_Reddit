@@ -68,7 +68,7 @@ class PostsAdapter(private val postClickListener: PostClickListener) :
         RecyclerView.ViewHolder(binding.root) {
         private val rootContext: Context = binding.root.context
         fun bind(child: Child) {
-            binding.postImage.loadImage(child.postData.url, rootContext)
+//            binding.postImage.loadImage(child.postData.url, rootContext)
             binding.postTitleTv.text = child.postData.title
             binding.subredditTitleTv.text = child.postData.subredditNameWithPrefix
             binding.submittedByTv.text =

@@ -26,6 +26,7 @@ class PostDetailViewModel @Inject constructor(
         val restoredSubredditName =
             savedStateHandle.get<String>(Constants.subredditNameKey) ?: subredditName
 
+
         if (_state.value?.postDetail == null) {
             getPostDetailsUseCase.execute(
                 articleId = restoredPostId,

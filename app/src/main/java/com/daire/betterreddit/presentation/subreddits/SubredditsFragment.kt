@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
@@ -19,6 +20,7 @@ import com.daire.betterreddit.presentation.util.fadeToVisible
 import com.daire.betterreddit.presentation.util.loadImage
 import com.daire.betterreddit.presentation.util.setSpanToFillRemainder
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textview.MaterialTextView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -73,7 +75,11 @@ class SubredditsFragment : Fragment(R.layout.fragment_subreddits), SubredditItem
     }
 
     override fun onItemSelected(position: Int, item: SubredditChildData) {
-        uiController.displayToast("click")
+        findNavController().navigate(
+            SubredditsFragmentDirections.actionSubredditsFragmentToPostsFragment(
+                subredditName = item.subredditName
+            )
+        )
     }
 
     override fun onItemLongClick(position: Int, item: SubredditChildData): Boolean {
@@ -102,7 +108,12 @@ class SubredditsFragment : Fragment(R.layout.fragment_subreddits), SubredditItem
             getString(R.string.subscriber_count, subredditChildData.subscribers)
         dialog.show()
         subredditInfoViewSubredditBtn.setOnClickListener {
-
+            dialog.dismiss()
+            findNavController().navigate(
+                SubredditsFragmentDirections.actionSubredditsFragmentToPostsFragment(
+                    subredditName = subredditChildData.subredditName
+                )
+            )
         }
     }
 

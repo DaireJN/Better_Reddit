@@ -1,6 +1,6 @@
 package com.daire.betterreddit.data.remote.api
 
-import com.daire.betterreddit.data.remote.dto.postdetail.RemoteRootDataDto
+import com.daire.betterreddit.data.remote.dto.postdetail.RootRemotePostDetailResponseDto
 import com.daire.betterreddit.data.remote.dto.posts.RemoteSubredditPostsResponseDto
 import com.daire.betterreddit.data.remote.dto.subreddits.RemoteDefaultSubredditsDto
 import retrofit2.http.GET
@@ -23,5 +23,5 @@ interface RedditApi {
         subredditName: String,
         @Path("articleId")
         articleId: String
-    ): List<RemoteRootDataDto>
+    ): RootRemotePostDetailResponseDto
 }

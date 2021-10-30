@@ -6,5 +6,6 @@ data class SubredditChildData(
     val displayName: String,
     val headerImage: String,
     val iconImage: String,
-    val description: String
+    val description: String,
+    val subredditName: String
 )

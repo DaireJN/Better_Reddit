@@ -27,13 +27,13 @@ class PostDetailFragment : Fragment(R.layout.fragment_post_detail) {
         handlePostType()
         args.apply {
             binding.potsTitleTxt.text = this.postTitle
-//            viewModel.getPostDetails(postId = args.articleId, subredditName = args.subredditName)
+            viewModel.getPostDetails(postId = args.articleId, subredditName = args.subredditName)
         }
 
         viewModel.state.observe(viewLifecycleOwner) { state ->
             uiController.displayProgressSpinner(state.isLoading)
             state.postDetail?.apply {
-                uiController.displayToast(this.author)
+//                uiController.displayToast(this.postReply?.size?.toString())
             }
             if (state.error.isNotEmpty()) {
                 uiController.displayToast(state.error)

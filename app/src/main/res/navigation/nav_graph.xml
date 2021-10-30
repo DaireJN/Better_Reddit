@@ -15,12 +15,22 @@
             app:destination="@id/postDetailFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="subredditName"
+            app:argType="string"
+            android:defaultValue="all" />
     </fragment>
     <fragment
         android:id="@+id/subredditsFragment"
         android:name="com.daire.betterreddit.presentation.subreddits.SubredditsFragment"
         android:label="fragment_subreddits"
-        tools:layout="@layout/fragment_subreddits" />
+        tools:layout="@layout/fragment_subreddits">
+        <action
+            android:id="@+id/action_subredditsFragment_to_postsFragment"
+            app:destination="@id/postsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.daire.betterreddit.presentation.profile.ProfileFragment"

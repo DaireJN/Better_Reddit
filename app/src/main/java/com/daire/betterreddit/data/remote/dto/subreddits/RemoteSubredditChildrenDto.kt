@@ -13,5 +13,6 @@ fun RemoteSubredditChildrenDto.toSubRedditChildData() = SubredditChildData(
     subscribers = data.subscribers,
     headerImage = data.header_img ?: "",
     iconImage = data.icon_img,
-    description = data.public_description
+    description = data.public_description,
+    subredditName = data.display_name
 )

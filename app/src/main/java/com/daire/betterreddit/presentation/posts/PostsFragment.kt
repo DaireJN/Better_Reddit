@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.daire.betterreddit.R
@@ -19,6 +20,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class PostsFragment : Fragment(R.layout.fragment_posts), PostClickListener {
 
     private val binding by viewBinding(FragmentPostsBinding::bind)
+    private val args: PostsFragmentArgs by navArgs()
+
     private val viewModel by viewModels<PostsViewModel>()
     private var postsAdapter: PostsAdapter? = null
     private lateinit var uiController: UIController
@@ -26,7 +29,7 @@ class PostsFragment : Fragment(R.layout.fragment_posts), PostClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getSubredditPosts("ireland")
+        viewModel.getSubredditPosts(args.subredditName)
 
         uiController = activity as UIController
 

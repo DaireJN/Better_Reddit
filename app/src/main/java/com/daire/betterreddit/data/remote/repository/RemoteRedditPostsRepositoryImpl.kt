@@ -1,7 +1,7 @@
 package com.daire.betterreddit.data.remote.repository
 
 import com.daire.betterreddit.data.remote.api.RedditApi
-import com.daire.betterreddit.data.remote.dto.postdetail.RemoteRootDataDto
+import com.daire.betterreddit.data.remote.dto.postdetail.RootRemotePostDetailResponseDto
 import com.daire.betterreddit.data.remote.dto.posts.RemoteSubredditPostsResponseDto
 import com.daire.betterreddit.data.remote.dto.subreddits.RemoteDefaultSubredditsDto
 import com.daire.betterreddit.domain.repository.RemoteRedditPostsRepository
@@ -19,7 +19,7 @@ class RemoteRedditPostsRepositoryImpl @Inject constructor(
     override suspend fun getPostDetails(
         subredditName: String,
         articleId: String
-    ): List<RemoteRootDataDto> =
+    ): RootRemotePostDetailResponseDto =
         redditApi.getPostDetails(subredditName, articleId)
 
 }
