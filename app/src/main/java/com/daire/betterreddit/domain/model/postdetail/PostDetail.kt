@@ -2,7 +2,7 @@ package com.daire.betterreddit.domain.model.postdetail
 
 data class PostDetail(
     val post: Post,
-    val postReply: List<PostReply>? = emptyList(),
+    val postReplies: List<PostReply>? = emptyList(),
 )
 
 class Post(
@@ -15,8 +15,9 @@ class Post(
 )
 
 data class PostReply(
+    val id: String,
     val title: String,
-    val selfText: String,
+    val commentBody: String,
     val clicked: Boolean,
     val score: Int,
     val createdUtc: Double,

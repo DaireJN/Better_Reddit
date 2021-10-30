@@ -33,6 +33,9 @@ class MainActivity : AppCompatActivity(), UIController {
         val bottomNavigationView = binding.activityMainBottomNavigationView
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
+        bottomNavigationView.setOnItemReselectedListener {
+            // do nothing if menu item is reselected (prevents multiple network calls etc)
+        }
         lifecycleScope.launchWhenResumed {
             navController.addOnDestinationChangedListener { _, destination, arguments ->
                 showHideBottomNavOnDestinationChanged(destination.id, arguments)
@@ -43,7 +46,7 @@ class MainActivity : AppCompatActivity(), UIController {
     /**
      * when home is clicked on the bottom nav
      * [com.daire.betterreddit.presentation.posts.PostsFragment] arguments will have a default value
-     * where subredditName = "all"
+     * of subredditName = "all"
      * this means the subreddit "all" should be shown and bottom nav should be visible
      * for all other subreddits bottom nav should be hidden in [com.daire.betterreddit.presentation.posts.PostsFragment]
      */

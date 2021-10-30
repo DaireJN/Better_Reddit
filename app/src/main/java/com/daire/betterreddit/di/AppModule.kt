@@ -1,5 +1,6 @@
 package com.daire.betterreddit.di
 
+import android.text.util.Linkify
 import com.daire.betterreddit.common.Constants
 import com.daire.betterreddit.data.remote.api.RedditApi
 import com.daire.betterreddit.data.remote.repository.RemoteRedditPostsRepositoryImpl
@@ -42,4 +43,5 @@ object AppModule {
     fun provideGson(): Gson {
         return GsonBuilder().create()
     }
+
 }

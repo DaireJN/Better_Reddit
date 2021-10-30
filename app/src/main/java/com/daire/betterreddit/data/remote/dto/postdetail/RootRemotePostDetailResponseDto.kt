@@ -21,15 +21,16 @@ fun RootRemotePostDetailResponseDto.toPostDetail(): PostDetail {
             author = postDetails.children.first().data.author ?: "",
             selfText = postDetails.children.first().data.selftext ?: ""
         ),
-        postReply = commentDetails.children.map {
+        postReplies = commentDetails.children.map {
             val castReplies = it.data.replies as? List<RemoteReplyDto>
             PostReply(
+                id = it.data.id,
                 clicked = it.data.clicked,
                 createdUtc = it.data.created_utc,
                 score = it.data.score,
                 title = it.data.title ?: "",
                 author = it.data.author ?: "",
-                selfText = it.data.selftext ?: "",
+                commentBody = it.data.body ?: "",
                 replies = emptyList()
             )
         }

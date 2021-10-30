@@ -59,13 +59,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:layout_constraintBottom_toBottomOf="@+id/commentDownVote"
+            app:layout_constraintStart_toEndOf="@+id/commentDownVote"
+            app:layout_constraintTop_toTopOf="@+id/commentDownVote"
             tools:text="@string/vote_count" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageView"
+            android:id="@+id/commentDownVote"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="32dp"
