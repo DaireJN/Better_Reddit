@@ -65,7 +65,7 @@ class PostsFragment : Fragment(R.layout.fragment_posts), PostClickListener {
         postsAdapter = null
     }
 
-    override fun onItemSelected(position: Int, item: Child) {
+    private fun navigateToPostDetails(item: Child) {
         findNavController().navigate(
             PostsFragmentDirections.actionPostsFragmentToPostDetailFragment(
                 articleId = item.postData.id,
@@ -76,5 +76,21 @@ class PostsFragment : Fragment(R.layout.fragment_posts), PostClickListener {
                 subredditName = item.postData.subreddit
             )
         )
+    }
+
+    override fun onItemSelected(position: Int, item: Child) {
+        navigateToPostDetails(item)
+    }
+
+    override fun onImageClicked(position: Int, item: Child) {
+        uiController.displayToast("image")
+    }
+
+    override fun onCommentsClicked(position: Int, item: Child) {
+        navigateToPostDetails(item)
+    }
+
+    override fun onUpvoteClicked(position: Int, item: Child) {
+        uiController.displayToast("upvote")
     }
 }

@@ -60,7 +60,10 @@ class PostDetailFragment constructor(
             PostType.IMAGE.hint -> {
 
             }
-            PostType.VIDEO.hint -> {
+            PostType.HOSTED_VIDEO.hint -> {
+            }
+            PostType.RICH_VIDEO.hint -> {
+
             }
             PostType.TEXT.hint -> {
                 setSelfText(args.selfText)

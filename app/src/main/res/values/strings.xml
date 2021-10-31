@@ -16,5 +16,6 @@
     <string name="button">Button</string>
     <string name="share">share</string>
     <string name="loading">Loading</string>
+    <string name="username">username</string>
 
 </resources>

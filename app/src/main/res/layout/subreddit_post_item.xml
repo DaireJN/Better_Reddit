@@ -59,13 +59,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/commentDownVote"
-            app:layout_constraintStart_toEndOf="@+id/commentDownVote"
-            app:layout_constraintTop_toTopOf="@+id/commentDownVote"
+            app:layout_constraintBottom_toBottomOf="@+id/upvotePostBtn"
+            app:layout_constraintStart_toEndOf="@+id/upvotePostBtn"
+            app:layout_constraintTop_toTopOf="@+id/upvotePostBtn"
             tools:text="@string/vote_count" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/commentDownVote"
+            android:id="@+id/upvotePostBtn"
+            android:background="?android:selectableItemBackgroundBorderless"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="32dp"
@@ -77,8 +78,9 @@
             app:layout_constraintTop_toBottomOf="@+id/submittedByTv" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/postComments"
             android:layout_width="24dp"
+            android:background="?android:selectableItemBackgroundBorderless"
             android:layout_height="24dp"
             android:layout_marginStart="32dp"
             android:src="@drawable/ic_baseline_comment_24"
@@ -93,10 +95,10 @@
             android:layout_marginStart="8dp"
             tools:text="@tools:sample/lorem"
             style="@style/textSubHeading"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintBottom_toBottomOf="@+id/postComments"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+            app:layout_constraintStart_toEndOf="@+id/postComments"
+            app:layout_constraintTop_toTopOf="@+id/postComments" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

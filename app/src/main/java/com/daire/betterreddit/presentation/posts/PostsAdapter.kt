@@ -44,6 +44,7 @@ class PostsAdapter(private val postClickListener: PostClickListener) :
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position).postData.postHint) {
             PostType.IMAGE.hint -> VIEW_TYPE_IMAGE_POST
+            PostType.RICH_VIDEO.hint -> VIEW_TYPE_IMAGE_POST
             else -> VIEW_TYPE_DEFAULT_POST
         }
     }
@@ -61,6 +62,12 @@ class PostsAdapter(private val postClickListener: PostClickListener) :
             binding.root.setOnClickListener {
                 postClickListener.onItemSelected(absoluteAdapterPosition, child)
             }
+            binding.postComments.setOnClickListener {
+                postClickListener.onCommentsClicked(absoluteAdapterPosition, child)
+            }
+            binding.upvotePostBtn.setOnClickListener {
+                postClickListener.onUpvoteClicked(absoluteAdapterPosition, child)
+            }
         }
     }
 
@@ -68,15 +75,21 @@ class PostsAdapter(private val postClickListener: PostClickListener) :
         RecyclerView.ViewHolder(binding.root) {
         private val rootContext: Context = binding.root.context
         fun bind(child: Child) {
-//            binding.postImage.loadImage(child.postData.url, rootContext)
+            binding.postImage.loadImage(child.postData.url, rootContext)
             binding.postTitleTv.text = child.postData.title
             binding.subredditTitleTv.text = child.postData.subredditNameWithPrefix
             binding.submittedByTv.text =
                 rootContext.getString(R.string.submission_by, child.postData.author)
             binding.votesCountTv.text = child.postData.score.toString()
             binding.commentCountTv.text = child.postData.numComments.toString()
-            binding.root.setOnClickListener {
-                postClickListener.onItemSelected(absoluteAdapterPosition, child)
+            binding.postImage.setOnClickListener {
+                postClickListener.onImageClicked(absoluteAdapterPosition, child)
+            }
+            binding.postComments.setOnClickListener {
+                postClickListener.onCommentsClicked(absoluteAdapterPosition, child)
+            }
+            binding.upvoteImagePostBtn.setOnClickListener {
+                postClickListener.onUpvoteClicked(absoluteAdapterPosition, child)
             }
         }
     }
@@ -107,4 +120,7 @@ object ChildDiffCallback : DiffUtil.ItemCallback<Child>() {
 
 interface PostClickListener {
     fun onItemSelected(position: Int, item: Child)
+    fun onImageClicked(position: Int, item: Child)
+    fun onCommentsClicked(position: Int, item: Child)
+    fun onUpvoteClicked(position: Int, item: Child)
 }
