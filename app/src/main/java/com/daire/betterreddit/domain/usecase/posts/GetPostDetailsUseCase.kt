@@ -1,4 +1,4 @@
-package com.daire.betterreddit.domain.usecase
+package com.daire.betterreddit.domain.usecase.posts
 
 import com.bumptech.glide.load.HttpException
 import com.daire.betterreddit.common.HTTP_ERROR_MSG
@@ -13,13 +13,13 @@ import java.io.IOException
 import javax.inject.Inject
 
 class GetPostDetailsUseCase @Inject constructor(
-    private val repository: RemoteRedditPostsRepository
+    private val remoteRedditPostsRepository: RemoteRedditPostsRepository
 ) {
     fun execute(subredditName: String, articleId: String): Flow<Resource<PostDetail>> = flow {
         try {
             emit(Resource.Loading())
             val data =
-                repository.getPostDetails(subredditName, articleId).toPostDetail()
+                remoteRedditPostsRepository.getPostDetails(subredditName, articleId).toPostDetail()
             emit(Resource.Success(data))
         } catch (e: HttpException) {
             emit(Resource.Error<PostDetail>(e.localizedMessage ?: HTTP_ERROR_MSG))

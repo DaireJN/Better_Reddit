@@ -1,4 +1,4 @@
-package com.daire.betterreddit.domain.usecase
+package com.daire.betterreddit.domain.usecase.subreddit
 
 import com.daire.betterreddit.common.HTTP_ERROR_MSG
 import com.daire.betterreddit.common.IO_ERROR_MSG

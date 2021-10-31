@@ -3,7 +3,7 @@ package com.daire.betterreddit.presentation.postdetail
 import androidx.lifecycle.*
 import com.daire.betterreddit.common.Constants
 import com.daire.betterreddit.common.Resource
-import com.daire.betterreddit.domain.usecase.GetPostDetailsUseCase
+import com.daire.betterreddit.domain.usecase.posts.PostUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PostDetailViewModel @Inject constructor(
-    private val getPostDetailsUseCase: GetPostDetailsUseCase,
+    private val postUseCases: PostUseCases,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -28,7 +28,7 @@ class PostDetailViewModel @Inject constructor(
 
 
         if (_state.value?.postDetail == null) {
-            getPostDetailsUseCase.execute(
+            postUseCases.getPostDetailsUseCase.execute(
                 articleId = restoredPostId,
                 subredditName = restoredSubredditName
             ).onEach { result ->
@@ -49,7 +49,7 @@ class PostDetailViewModel @Inject constructor(
         }
     }
 
-    // save and restore data in case process death occurs
+    // save and data to be restored in case process death occurs
     private fun savePostIdAndSubredditName(articleId: String, subredditName: String) {
         savedStateHandle.set(Constants.articleIdKey, articleId)
         savedStateHandle.set(Constants.subredditNameKey, subredditName)

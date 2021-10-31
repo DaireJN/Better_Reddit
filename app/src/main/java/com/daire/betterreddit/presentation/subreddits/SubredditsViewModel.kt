@@ -2,7 +2,7 @@ package com.daire.betterreddit.presentation.subreddits
 
 import androidx.lifecycle.*
 import com.daire.betterreddit.common.Resource
-import com.daire.betterreddit.domain.usecase.GetDefaultSubredditListUseCase
+import com.daire.betterreddit.domain.usecase.subreddit.GetDefaultSubredditListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

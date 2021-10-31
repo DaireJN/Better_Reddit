@@ -1,10 +1,12 @@
 package com.daire.betterreddit.di
 
-import android.text.util.Linkify
 import com.daire.betterreddit.common.Constants
 import com.daire.betterreddit.data.remote.api.RedditApi
 import com.daire.betterreddit.data.remote.repository.RemoteRedditPostsRepositoryImpl
 import com.daire.betterreddit.domain.repository.RemoteRedditPostsRepository
+import com.daire.betterreddit.domain.usecase.posts.GetPostDetailsUseCase
+import com.daire.betterreddit.domain.usecase.posts.GetPostsForSubredditUseCase
+import com.daire.betterreddit.domain.usecase.posts.PostUseCases
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -43,5 +45,20 @@ object AppModule {
     fun provideGson(): Gson {
         return GsonBuilder().create()
     }
+
+    @Provides
+    @Singleton
+    fun providePostUseCases(
+        remoteRedditPostsRepository: RemoteRedditPostsRepository
+    ): PostUseCases {
+        return PostUseCases(
+            getPostDetailsUseCase = GetPostDetailsUseCase(remoteRedditPostsRepository),
+            getPostsForSubredditUseCase = GetPostsForSubredditUseCase(
+                remoteRedditPostsRepository
+            )
+        )
+    }
+
+
 
 }
