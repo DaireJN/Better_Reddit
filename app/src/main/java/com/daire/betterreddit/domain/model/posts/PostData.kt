@@ -11,5 +11,7 @@ data class PostData(
     val subredditNameWithPrefix: String,
     val numComments: Int,
     val selfText: String,
-    val id: String
+    val id: String,
+    val videoThumbnailUrl: String,
+    val videoUrl: String
 )

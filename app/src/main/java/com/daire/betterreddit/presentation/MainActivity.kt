@@ -8,10 +8,10 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.daire.betterreddit.R
 import com.daire.betterreddit.databinding.ActivityMainBinding
-import com.daire.betterreddit.presentation.util.fadeToInvisible
-import com.daire.betterreddit.presentation.util.fadeToVisible
-import com.daire.betterreddit.presentation.util.hide
-import com.daire.betterreddit.presentation.util.show
+import com.daire.betterreddit.presentation.extensions.fadeToInvisible
+import com.daire.betterreddit.presentation.extensions.fadeToVisible
+import com.daire.betterreddit.presentation.extensions.hide
+import com.daire.betterreddit.presentation.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 
 

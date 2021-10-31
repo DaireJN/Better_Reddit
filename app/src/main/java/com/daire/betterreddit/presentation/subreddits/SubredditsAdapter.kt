@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.daire.betterreddit.databinding.SubredditItemBinding
 import com.daire.betterreddit.domain.model.subreddit.SubredditChildData
-import com.daire.betterreddit.presentation.util.loadImage
+import com.daire.betterreddit.presentation.extensions.loadImage
 
 class SubredditsAdapter(private val subredditItemClickListener: SubredditItemClickListener) :
     ListAdapter<SubredditChildData, SubredditsAdapter.SubredditViewHolder>(

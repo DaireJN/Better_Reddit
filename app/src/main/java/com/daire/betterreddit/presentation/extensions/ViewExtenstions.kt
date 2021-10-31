@@ -1,10 +1,11 @@
-package com.daire.betterreddit.presentation.util
+package com.daire.betterreddit.presentation.extensions
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.drawable.BitmapDrawable
+import android.text.util.Linkify
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -13,6 +14,7 @@ import android.view.ViewTreeObserver
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.animation.doOnEnd
 import androidx.core.view.drawToBitmap
 import androidx.recyclerview.widget.GridLayoutManager
@@ -175,4 +177,8 @@ fun BottomNavigationView.hide() {
             }
         }
     })
+}
+
+fun TextView.linkify(){
+    Linkify.addLinks(this, Linkify.ALL)
 }

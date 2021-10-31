@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.daire.betterreddit.databinding.CommentItemBinding
 import com.daire.betterreddit.domain.model.postdetail.PostReply
+import com.daire.betterreddit.presentation.extensions.linkify
 
 class PostCommentsAdapter :
     ListAdapter<PostReply, PostCommentsAdapter.ViewHolder>(DiffCallback()) {
@@ -36,11 +37,7 @@ class PostCommentsAdapter :
             binding.commentScore.text = postReply.score.toString()
             binding.commentUpvote.setOnClickListener { }
             binding.commentDownVote.setOnClickListener { }
-            linkifyCommentBodyTextView()
-        }
-
-        private fun linkifyCommentBodyTextView() {
-            Linkify.addLinks(binding.commentBodyTxt, Linkify.ALL)
+            binding.commentBodyTxt.linkify()
         }
     }
 

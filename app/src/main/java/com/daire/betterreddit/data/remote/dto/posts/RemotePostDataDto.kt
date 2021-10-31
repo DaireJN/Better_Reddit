@@ -84,7 +84,7 @@ data class RemotePostDataDto(
     val report_reasons: Any,
     val saved: Boolean,
     val score: Int,
-    val secure_media: Any,
+    val secure_media: RemoteSecureMediaDto? = null,
     val secure_media_embed: RemoteSecureMediaEmbedDto,
     val selftext: String,
     val selftext_html: Any,
@@ -107,7 +107,7 @@ data class RemotePostDataDto(
     val ups: Int,
     val upvote_ratio: Double,
     val url: String,
-    val url_overridden_by_dest: String,
+    val url_overridden_by_dest: String? = "",
     val user_reports: List<Any>,
     val view_count: Any,
     val visited: Boolean,
@@ -127,5 +127,7 @@ fun RemotePostDataDto.toPostData() = PostData(
     subredditNameWithPrefix = subreddit_name_prefixed,
     numComments = num_comments,
     selfText = selftext,
-    id = id
+    id = id,
+    videoThumbnailUrl = secure_media?.oembed?.thumbnail_url ?: "",
+    videoUrl = url_overridden_by_dest ?: ""
 )

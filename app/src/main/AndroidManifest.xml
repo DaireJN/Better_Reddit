@@ -19,5 +19,8 @@
             </intent-filter>
         </activity>
     </application>
-
+    <queries>
+        <!-- Android 11 requires declaration of apps you wish to query -->
+        <package android:name="com.google.android.youtube" />
+    </queries>
 </manifest>

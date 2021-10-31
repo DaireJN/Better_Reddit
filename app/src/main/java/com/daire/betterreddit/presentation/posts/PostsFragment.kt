@@ -1,5 +1,7 @@
 package com.daire.betterreddit.presentation.posts
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -13,8 +15,9 @@ import com.daire.betterreddit.common.viewBinding
 import com.daire.betterreddit.databinding.FragmentPostsBinding
 import com.daire.betterreddit.domain.model.posts.Child
 import com.daire.betterreddit.presentation.UIController
-import com.daire.betterreddit.presentation.util.fadeToVisible
+import com.daire.betterreddit.presentation.extensions.fadeToVisible
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class PostsFragment : Fragment(R.layout.fragment_posts), PostClickListener {
@@ -93,4 +96,15 @@ class PostsFragment : Fragment(R.layout.fragment_posts), PostClickListener {
     override fun onUpvoteClicked(position: Int, item: Child) {
         uiController.displayToast("upvote")
     }
+
+    override fun onVideoClicked(position: Int, item: Child) {
+        openVideo(item.postData.videoUrl)
+    }
+
+    private fun openVideo(videoUrl: String) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(videoUrl)
+        startActivity(intent)
+    }
+
 }

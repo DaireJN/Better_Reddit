@@ -16,11 +16,10 @@ import com.daire.betterreddit.common.viewBinding
 import com.daire.betterreddit.databinding.FragmentSubredditsBinding
 import com.daire.betterreddit.domain.model.subreddit.SubredditChildData
 import com.daire.betterreddit.presentation.UIController
-import com.daire.betterreddit.presentation.util.fadeToVisible
-import com.daire.betterreddit.presentation.util.loadImage
-import com.daire.betterreddit.presentation.util.setSpanToFillRemainder
+import com.daire.betterreddit.presentation.extensions.fadeToVisible
+import com.daire.betterreddit.presentation.extensions.loadImage
+import com.daire.betterreddit.presentation.extensions.setSpanToFillRemainder
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textview.MaterialTextView
 import dagger.hilt.android.AndroidEntryPoint
 
