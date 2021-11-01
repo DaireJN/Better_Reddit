@@ -4,4 +4,4 @@ import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class BetterRedditApplication : Application()
+open class BetterRedditApplication : Application()
