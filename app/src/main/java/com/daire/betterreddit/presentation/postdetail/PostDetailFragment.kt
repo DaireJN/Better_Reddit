@@ -16,9 +16,7 @@ import com.daire.betterreddit.presentation.UIController
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PostDetailFragment constructor(
-
-) : Fragment(R.layout.fragment_post_detail) {
+class PostDetailFragment : Fragment(R.layout.fragment_post_detail) {
 
     private lateinit var uiController: UIController
     private val args: PostDetailFragmentArgs by navArgs()
