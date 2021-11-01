@@ -26,7 +26,7 @@ class SubredditsFragmentTest {
     private val mockWebServer = MockWebServer()
 
     @Test
-    fun run() {
+    fun launchSubredditsFragment() {
         launchFragmentInHiltContainer<SubredditsFragment>(
             null,
             R.style.Theme_MaterialComponents_DayNight
